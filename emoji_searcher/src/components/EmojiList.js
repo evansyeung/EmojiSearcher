@@ -1,9 +1,18 @@
 import React from "react";
+import EmojiItem from "./EmojiItem";
 
-class EmojiList extends React.Component {
-  render() {
-    return <div>EmojiList</div>;
+const EmojiList = ({ emojiDict }) => {
+  const renderList = [];
+
+  for (var key in emojiDict) {
+    if (emojiDict.hasOwnProperty(key)) {
+      renderList.push(
+        <EmojiItem key={key} name={key} emoji={emojiDict[key]} />
+      );
+    }
   }
-}
+
+  return <div>{renderList}</div>;
+};
 
 export default EmojiList;
