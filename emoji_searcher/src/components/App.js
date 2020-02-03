@@ -4,17 +4,20 @@ import SearchBar from "./SearchBar";
 import EmojiList from "./EmojiList";
 
 class App extends React.Component {
-  state = { searchTerm: "", emojiDict: nodeEmoji.emoji };
+  state = { searchTerm: "", emojis: nodeEmoji.emoji };
 
   onSearchTermSubmit = searchTerm => {
-    this.setState({ searchTerm });
+    this.setState({
+      searchTerm: searchTerm,
+      emojis: nodeEmoji.search(searchTerm)
+    });
   };
 
   render() {
     return (
       <div>
         <SearchBar onSearchTermSubmit={this.onSearchTermSubmit} />
-        <EmojiList emojiDict={this.state.emojiDict} />
+        <EmojiList emojis={this.state.emojis} />
       </div>
     );
   }
